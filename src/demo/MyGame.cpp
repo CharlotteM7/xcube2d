@@ -10,7 +10,7 @@ MyGame::MyGame() : AbstractGame(), score(0), lives(3), numKeys(5), gameWon(false
 	gfx->setVerticalSync(true);
 	
 	//Background Music 
-	Mix_Music* bgMusic = ResourceManager::loadMP3("C:/Users/charl/OneDrive - University of Brighton/CM1429_Level 5/CI517- Game Engine Fundamentals/xcube/res/sounds/bgmusic.mp3");
+	Mix_Music* bgMusic = ResourceManager::loadMP3("res/sounds/bgmusic.mp3");
 	Mix_PlayMusic(bgMusic, -1);
 
 	// Pass the gfx pointer when creating the MyEngineSystem instance
