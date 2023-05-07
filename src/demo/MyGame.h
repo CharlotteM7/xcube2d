@@ -2,6 +2,8 @@
 #define __TEST_GAME_H__
 
 #include "../engine/AbstractGame.h"
+#include <algorithm>
+
 
 struct GameKey {
 	Point2 pos;
@@ -9,24 +11,26 @@ struct GameKey {
 };
 
 class MyGame : public AbstractGame {
-	private:
-		Rect box;
+private:
+	Rect box;
 
-		Vector2i velocity;
+	Vector2i velocity;
 
-		std::vector<std::shared_ptr<GameKey>> gameKeys;
+	std::vector<std::shared_ptr<GameKey>> gameKeys;
 
-		/* GAMEPLAY */
-		int score, numKeys, lives;
-		bool gameWon;
-
-		void handleKeyEvents();
-		void update();
-		void render();
-		void renderUI();
-	public:
-        MyGame();
-		~MyGame();
+	/* GAMEPLAY */
+	int score, numKeys, lives;
+	bool gameWon;
+	
+	void handleKeyEvents();
+	void update();
+	void render();
+	void renderUI();
+	
+public:
+	MyGame();
+	~MyGame();
+	
 };
 
 #endif
