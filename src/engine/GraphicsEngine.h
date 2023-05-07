@@ -12,6 +12,8 @@
 #include "EngineCommon.h"
 #include "GameMath.h"
 
+
+
 /* ENGINE DEFAULT SETTINGS */
 static const int DEFAULT_WINDOW_WIDTH = 800;
 static const int DEFAULT_WINDOW_HEIGHT = 600;
@@ -28,6 +30,10 @@ static const SDL_Color SDL_COLOR_ORANGE = { 0xFF, 0xA5, 0 };
 static const SDL_Color SDL_COLOR_PINK   = { 0xFF, 0xC0, 0xCB };
 static const SDL_Color SDL_COLOR_PURPLE = { 0x80, 0, 0x80 };
 static const SDL_Color SDL_COLOR_VIOLET = { 0xEE, 0x82, 0xEE };
+static const SDL_Color SDL_COLOR_BROWN = { 0x8B, 0x45, 0x13 };
+static const SDL_Color SDL_COLOR_DARK_GREEN = { 0x00, 0x64, 0x00 };
+static const SDL_Color transparentColor = { 255, 0, 255, 255 };
+
 
 inline SDL_Color getRandomColor(int minRGB, int maxRGB) {
 	SDL_Color color = { (Uint8)getRandom(minRGB, maxRGB), (Uint8)getRandom(minRGB, maxRGB), (Uint8)getRandom(minRGB, maxRGB) };
@@ -50,6 +56,8 @@ inline SDL_Color toSDLColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
 
 class GraphicsEngine {
 	friend class XCube2Engine;
+	friend class MyGame;
+	friend class MyEngineSystem;
 	private:
 		SDL_Window * window;
 		static SDL_Renderer * renderer;
@@ -95,6 +103,7 @@ class GraphicsEngine {
 		void drawEllipse(const Point2 & center, const float & radiusX, const float & radiusY);
 		void drawTexture(SDL_Texture *, SDL_Rect * src, SDL_Rect * dst, const double & angle = 0.0, const SDL_Point * center = 0, SDL_RendererFlip flip = SDL_FLIP_NONE);
 		void drawTexture(SDL_Texture *, SDL_Rect * dst, SDL_RendererFlip flip = SDL_FLIP_NONE);
+
 		void drawText(const std::string & text, const int &x, const int &y);
 
 		void setDrawColor(const SDL_Color &);
@@ -139,6 +148,7 @@ class GraphicsEngine {
 
 		static SDL_Texture * createTextureFromSurface(SDL_Surface *);
 		static SDL_Texture * createTextureFromString(const std::string &, TTF_Font *, SDL_Color);
+
 };
 
 typedef GraphicsEngine GFX;
